@@ -5,9 +5,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login Page</title>
-    <!-- Link to Bootstrap CSS -->
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
-    <!-- <link rel="stylesheet" href="/stylesheets/login.css"> -->
+    <link rel="stylesheet" href="/stylesheets/login.css">
 
 </head>
 
@@ -31,9 +30,6 @@
                                 <div class="input-group">
                                     <input type="password" class="form-control" id="password"
                                         placeholder="Enter your password" required>
-                                    <!-- <div class="input-group-append">
-                                        <button class="btn btn-outline-secondary" type="button" id="showPasswordBtn">Show</button> -->
-                                    <!-- </div> -->
                                 </div>
                             </div>
                             <div class="form-check">
@@ -52,27 +48,10 @@
             </div>
         </div>
     </div>
-
-    <!-- Add your JavaScript and Bootstrap JS links here -->
-    <!-- Link to Bootstrap JS and jQuery -->
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-    <script>
-        // Show/hide password when "Show Password" checkbox is checked
-        document.getElementById('showPassword').addEventListener('change', function () {
-            const passwordInput = document.getElementById('password');
-            const showPasswordBtn = document.getElementById('showPasswordBtn');
-
-            if (this.checked) {
-                passwordInput.type = 'text';
-                showPasswordBtn.textContent = 'Hide';
-            } else {
-                passwordInput.type = 'password';
-                showPasswordBtn.textContent = 'Show';
-            }
-        });
-    </script>
+    <script src="/javascripts/login.js"></script>
 </body>
 
 </html>
