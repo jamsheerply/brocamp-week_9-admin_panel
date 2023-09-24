@@ -1,0 +1,58 @@
+body {
+    background-color: #f0f0f0; /* Background color */
+    font-family: Arial, sans-serif; /* Font family */
+}
+.navbar {
+    background-color: #333; /* Navbar background color */
+}
+.navbar-brand {
+    color: #fff; /* Navbar brand text color */
+}
+.navbar-toggler-icon {
+    background-color: #fff; /* Navbar toggler icon color */
+}
+.nav-item.nav-link {
+    color: #fff; /* Navbar link text color */
+}
+.container {
+    background-color: #fff; /* Container background color */
+    border-radius: 10px; /* Container border radius */
+    padding: 20px; /* Container padding */
+    box-shadow: 0 0 10px rgba(0,0,0,0.1); /* Container box shadow */
+}
+.btn-success {
+    background-color: #27ae60; /* Button background color */
+    border-color: #27ae60; /* Button border color */
+}
+.btn-success:hover {
+    background-color: #219f56; /* Hover background color */
+    border-color: #219f56; /* Hover border color */
+}
+.table {
+    background-color: #fff; /* Table background color */
+}
+th, td {
+    color: #333; /* Table text color */
+}
+.btn-primary {
+    background-color: #3498db; /* Primary button background color */
+    border-color: #3498db; /* Primary button border color */
+}
+.btn-primary:hover {
+    background-color: #2980b9; /* Hover background color */
+    border-color: #2980b9; /* Hover border color */
+}
+.btn-danger {
+    background-color: #e74c3c; /* Danger button background color */
+    border-color: #e74c3c; /* Danger button border color */
+}
+.btn-danger:hover {
+    background-color: #c0392b; /* Hover background color */
+    border-color: #c0392b; /* Hover border color */
+}
+.bg-light {
+    background-color: #f9f9f9; /* Footer background color */
+}
+.text-center {
+    color: #333; /* Footer text color */
+}
