@@ -1,11 +1,13 @@
+// mongodb
+const mogoose=require("mongoose")
+mogoose.connect("mongodb://127.0.0.1:27017/admin_panel")
+
 //express
 const express=require("express")
 const app=express()
 app.listen(4000,()=>{
   console.log("server started at http://127.0.0.1:4000/ ")
 })
-
-
 
 // view engine
 app.set('views',"./views")
@@ -19,30 +21,32 @@ app.use(bodyParser.urlencoded({extended:true}))
 // static file
 app.use(express.static("public"));
 
-// mongodb
-const mogoose=require("mongoose")
-mogoose.connect("mongodb://127.0.0.1:27017/admin_pannel")
 
-var loginRouter = require('./routes/login-page');
-app.use('/', loginRouter);
 
-var signupRouter = require('./routes/sign-up');
-app.use('/sign-up', signupRouter);
+// var loginRouter = require('./routes/login-page');
+// app.use('/', loginRouter);
 
-var homeRouter = require('./routes/home');
-app.use('/home', homeRouter);
+// var signupRouter = require('./routes/sign-up');
+// app.use('/sign-up', signupRouter);
 
-var logoutRouter = require('./routes/logout');
-app.use('/logout', logoutRouter);
+// var homeRouter = require('./routes/home');
+// app.use('/home', homeRouter);
 
-var adminRouter = require('./routes/admin-panel');
-app.use('/admin-panel', adminRouter);
+// var logoutRouter = require('./routes/logout');
+// app.use('/logout', logoutRouter);
 
-var addRouter = require('./routes/add-user');
-app.use('/add-user', addRouter);
+// var adminRouter = require('./routes/admin-panel');
+// app.use('/admin-panel', adminRouter);
 
-var editRouter = require('./routes/edit-user');
-app.use('/edit-user', editRouter);
+// var addRouter = require('./routes/add-user');
+// app.use('/add-user', addRouter);
 
-var deleteRouter = require('./routes/delete-user');
-app.use('/delete-user', deleteRouter);
+// var editRouter = require('./routes/edit-user');
+// app.use('/edit-user', editRouter);
+
+// var deleteRouter = require('./routes/delete-user');
+// app.use('/delete-user', deleteRouter);
+
+//for signUp routes
+const userRoute=require("./routes/userRoute")
+app.use("/",userRoute)
