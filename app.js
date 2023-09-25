@@ -23,30 +23,10 @@ app.use(express.static("public"));
 
 
 
-// var loginRouter = require('./routes/login-page');
-// app.use('/', loginRouter);
-
-// var signupRouter = require('./routes/sign-up');
-// app.use('/sign-up', signupRouter);
-
-// var homeRouter = require('./routes/home');
-// app.use('/home', homeRouter);
-
-// var logoutRouter = require('./routes/logout');
-// app.use('/logout', logoutRouter);
-
-// var adminRouter = require('./routes/admin-panel');
-// app.use('/admin-panel', adminRouter);
-
-// var addRouter = require('./routes/add-user');
-// app.use('/add-user', addRouter);
-
-// var editRouter = require('./routes/edit-user');
-// app.use('/edit-user', editRouter);
-
-// var deleteRouter = require('./routes/delete-user');
-// app.use('/delete-user', deleteRouter);
-
-//for signUp routes
+//for user routes
 const userRoute=require("./routes/userRoute")
 app.use("/",userRoute)
+
+// //for admin routes
+const adminRoute=require("./routes/adminRoute")
+app.use("/admin",adminRoute)
