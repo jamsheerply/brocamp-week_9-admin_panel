@@ -93,12 +93,64 @@ const addUser=async (req,res)=>{
         console.log(error.message)
     }
 }
+
+//edit user
+const editUserLoad=async(req,res)=>{
+    try {
+        const id=req.query.id;
+       const userData = await User.findById({_id:id})
+       if (userData) {
+        res.render("edit-user",{user:userData})
+       } else {
+        res.render("/admin/dashboard")
+       }
+        
+    } catch (error) {
+        console.log(error.message)
+    }
+}
+const updateUsers=async(req,res)=>{
+    try {
+        const spassword = await securePassword(req.body.password)
+        
+        const userData=await User.findByIdAndUpdate({_id:req.body.id},{$set:{username:req.body.username,email:req.body.email,password:spassword}})
+    res.redirect("/admin/dashboard")
+    } catch (error) {
+        console.log(error.message)
+    }
+}
+//delete user
+const deleteUser= async(req,res)=>{
+    try {
+        const id=req.query.id;
+        await User.deleteOne({_id:id})
+        res.redirect("/admin/dashboard")
+    } catch (error) {
+        console.log(error.message)
+    }
+}
+
+const searchUser= async(req,res)=>{
+    try {
+        const search=req.body.search
+        console.log(search)
+        const usersDataser=await User.find({is_admin:0,username:{
+            $regex: new RegExp(search, 'i')
+        }})
+        res.render("adminPanel",{user:usersDataser})
+    } catch (error) {
+        console.log(error.message)
+    }
+}
 module.exports = {
     loadLogin,
     verifyLogin,
     adminDashbord,
     logout,
     newUserLoad,
-    addUser
-
+    addUser,
+    editUserLoad,
+    updateUsers,
+    deleteUser,
+    searchUser
 }
