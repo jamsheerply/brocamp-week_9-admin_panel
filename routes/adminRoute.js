@@ -29,7 +29,6 @@ admin_route.get("/edit-user",auth.isLogin,adminController.editUserLoad)
 admin_route.post("/edit-user",adminController.updateUsers)
 admin_route.get("/delete-user",adminController.deleteUser)
 admin_route.get("/search",adminController.searchUser)
-admin_route.post("/search",adminController.searchUser)
 // admin_route.get("*", (req, res) => {
 //     res.redirect("/")
 

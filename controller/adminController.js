@@ -133,8 +133,7 @@ const deleteUser= async(req,res)=>{
 //search users
 const searchUser = async (req, res) => {
     try {
-        const search = req.query.Search;
-        console.log("Search Query:", search);
+        const search = req.query.search;
         const usersData = await User.find({
             is_admin: 0,
             username: {
