@@ -1,12 +1,10 @@
 
 
-const isLogin=async(req,res,next)=>{
+const isLogin = async (req, res, next) => {
     try {
 
-        if(req.session.user_id){
-
-        }else{
-            res.redirect("/")
+        if (!req.session.user_id) {
+            return res.redirect("/")
         }
         next();
     } catch (error) {
@@ -14,17 +12,17 @@ const isLogin=async(req,res,next)=>{
     }
 }
 
-const isLogout=async(req,res,next)=>{
+const isLogout = async (req, res, next) => {
     try {
-        if(req.session.user_id){
-            res.redirect("/home")
+        if (req.session.user_id) {
+            return res.redirect("/home")
         }
         next()
     } catch (error) {
         console.log(error.message)
     }
 }
-module.exports={
+module.exports = {
     isLogin,
     isLogout
 }

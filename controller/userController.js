@@ -30,7 +30,7 @@ const insertUser = async (req, res) => {
         })
         const userData = await user.save()
         if (userData) {
-            res.render("sign-up", { message: "succesfully signup,Try to login now" })
+            res.redirect("/login")
         } else {
             res.render("sign-up", { message: "failed and try agian or try to contact admin" })
         }

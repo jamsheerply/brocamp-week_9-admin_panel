@@ -86,7 +86,7 @@ const addUser=async (req,res)=>{
         if (userData) {
             res.redirect("/admin/dashboard")
         } else {
-            res.render("sign-up", { message: "failed and try agian" })
+            res.render("newUser", { message: "failed and try agian" })
         }
         
     } catch (error) {
@@ -130,18 +130,23 @@ const deleteUser= async(req,res)=>{
     }
 }
 
-const searchUser= async(req,res)=>{
+//search users
+const searchUser = async (req, res) => {
     try {
-        const search=req.body.search
-        console.log(search)
-        const usersDataser=await User.find({is_admin:0,username:{
-            $regex: new RegExp(search, 'i')
-        }})
-        res.render("adminPanel",{user:usersDataser})
+        const search = req.query.Search;
+        console.log("Search Query:", search);
+        const usersData = await User.find({
+            is_admin: 0,
+            username: {
+                $regex: new RegExp(search, 'i')
+            }
+        });
+        res.render("adminPanel", { user: usersData });
     } catch (error) {
-        console.log(error.message)
+        console.log(error.message);
     }
-}
+};
+
 module.exports = {
     loadLogin,
     verifyLogin,

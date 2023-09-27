@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin Panel</title>
-    <!-- Link to Bootstrap CSS -->
+    
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="/stylesheets/admin-panel.css">
 </head>
@@ -30,7 +30,7 @@
         <div class="d-flex justify-content-between mb-3">
             <a href="/admin/new-user"><button class="btn btn-success">Add New User</button></a>
 
-            <form class="form-inline" action="/admin/Search" method="post">
+            <form class="form-inline" action="/admin/Search" method="get">
                 <input type="text" class="form-control mr-sm-2" placeholder="Search" name="Search">
                 <button class="btn btn-primary my-2 my-sm-0" type="submit">Search</button>
             </form>

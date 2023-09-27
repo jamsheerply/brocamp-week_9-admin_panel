@@ -5,8 +5,8 @@ const session = require("express-session")
 const config = require("../config/config")
 admin_route.use(session({
     secret: config.sessionSecret,
-    resave: false, // Set to false to prevent session resaving on every request
-    saveUninitialized: false, // Set to false to prevent uninitialized sessions from being saved
+    resave: false,
+    saveUninitialized: false,
 
 }))
 
