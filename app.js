@@ -9,6 +9,10 @@ app.listen(4000,()=>{
   console.log("server started at http://127.0.0.1:4000/ ")
 })
 
+//nocache
+const nocache = require("nocache");
+app.use(nocache());
+
 // view engine
 app.set('views',"./views")
 app.set('view engine', 'ejs')
