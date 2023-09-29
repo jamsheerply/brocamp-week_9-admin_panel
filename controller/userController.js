@@ -58,18 +58,13 @@ const verifyLogin = async (req, res) => {
         if (userData) {
             const passwordMatch = await bcrypt.compare(password, userData.password)
             if (passwordMatch) {
-                if (userData.is_admin === 0) {
-                    req.session.user_id = userData._id
-                    res.redirect("/home")
-                } else {
-                    req.session.user_id = userData._id
-                    res.redirect("/admin")
-                }
+                req.session.user_id = userData._id
+                res.redirect("/home")
             } else {
-                res.render("login-page", { message: "Email and password is incorrect-1" })
+                res.render("login-page", { message: "Email and password is incorrect" })
             }
         } else {
-            res.render("login-page", { message: "Email and password is incorrect-2" })
+            res.render("login-page", { message: "Email and password is incorrect" })
         }
     } catch (error) {
         console.log(error.message)
