@@ -4,6 +4,7 @@ const isLogin = async (req, res, next) => {
     try {
 
         if (!req.session.user_id) {
+            console.log("worked user auth")
             return res.redirect("/")
         }
         next();
@@ -14,7 +15,7 @@ const isLogin = async (req, res, next) => {
 
 const isLogout = async (req, res, next) => {
     try {
-        if (req.session.user_id) {
+        if (req.session.user_id && req.session.is_admin == 0) {
             return res.redirect("/home")
         }
         next()

@@ -2,8 +2,11 @@ const User = require("../models/userModel")
 const bcrypt = require("bcrypt")
 
 const loadLogin = async (req, res) => {
-    try {
+    try {if (req.session.is_admin === 0) {
+        res.redirect('/admin/dashboard')
+    } else {
         res.render("loginAdmin")
+    }
     } catch (error) {
         console.log(error.message+"admin loadLogin")
     }
@@ -21,6 +24,7 @@ const verifyLogin = async (req, res) => {
                     res.render("loginAdmin", { message: "Email and password is incorrect" })
                 } else {
                     req.session.user_id= userData._id
+                    req.session.is_admin= userData.is_admin
                     res.redirect("/admin/dashboard")
                 }
             } else {

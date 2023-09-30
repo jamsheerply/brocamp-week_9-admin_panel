@@ -44,7 +44,11 @@ const insertUser = async (req, res) => {
 const loginLoad = async (req, res) => {
 
     try {
-        res.render("login-page")
+        if (req.session.is_admin === 1) {
+            res.redirect('/admin/dashboard')
+        } else {
+            res.render("login-page")
+        }
     } catch (error) {
         console.log(error.message)
     }
@@ -58,8 +62,13 @@ const verifyLogin = async (req, res) => {
         if (userData) {
             const passwordMatch = await bcrypt.compare(password, userData.password)
             if (passwordMatch) {
+                if (userData.is_admin === 1) {
+                    res.render("login-page", { message: "Email and password is incorrect" })
+                } else {
                 req.session.user_id = userData._id
+                req.session.is_admin = userData.is_admin
                 res.redirect("/home")
+                }
             } else {
                 res.render("login-page", { message: "Email and password is incorrect" })
             }
