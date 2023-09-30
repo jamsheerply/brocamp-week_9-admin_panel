@@ -23,6 +23,11 @@
                     <div class="card-body">
                         <form method="post">
                             <div class="form-group">
+                                <% if(typeof message !=="undefined" ){%>
+                                    <div class="alert alert-danger text-center">
+                                        <%= message %>
+                                    </div>
+                                    <%}%>
                                 <label for="username">Username</label>
                                 <input type="text" class="form-control" name="username" id="username" value="<%=user.username%>" placeholder="Enter new password" required>
                             </div>

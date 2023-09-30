@@ -23,22 +23,33 @@ const loadSignup = async (req, res) => {
 const insertUser = async (req, res) => {
     const secpassword = await securePassword(req.body.password)
     try {
-        const user = new User({
-            username: req.body.username,
-            email: req.body.email,
-            password: secpassword
-        })
-        const userData = await user.save()
-        if (userData) {
-            res.redirect("/login")
+        // Check if the email already exists in the database
+        const emailToFind = req.body.email;
+        const emailExists = await User.findOne({ email: emailToFind });
+        
+        if (emailExists) {
+            res.render("sign-up", { message: "Email already exists. Please use a different email." });
+        } else if (req.body.username.trim() === "") {
+            res.render("sign-up", { message: "Please fill in a username." });
         } else {
-            res.render("sign-up", { message: "failed and try agian or try to contact admin" })
-        }
+            const user = new User({
+                username: req.body.username,
+                email: req.body.email,
+                password: secpassword
+            });
 
+            const userData = await user.save();
+            if (userData) {
+                res.redirect("/login");
+            } else {
+                res.render("sign-up", { message: "Failed to create the user. Please try again or contact the admin." });
+            }
+        }
     } catch (error) {
-        res.send(error.message)
+        res.send(error.message);
     }
 }
+
 
 //login user
 const loginLoad = async (req, res) => {
