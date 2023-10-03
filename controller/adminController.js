@@ -92,7 +92,7 @@ const addUser = async (req, res) => {
             const password = spassword
             const user = new User({
                 username: username,
-                email: email,
+                email: email.toLowerCase(),
                 password: spassword
             })
             const userData = await user.save();
