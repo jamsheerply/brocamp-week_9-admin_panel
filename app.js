@@ -14,13 +14,12 @@ const nocache = require("nocache");
 app.use(nocache());
 
 // view engine
-app.set('views',"./views")
 app.set('view engine', 'ejs')
 
 // bodyParser
-const bodyParser=require("body-parser")
-app.use(bodyParser.json())
-app.use(bodyParser.urlencoded({extended:true}))
+// const bodyParser=require("body-parser")
+// app.use(bodyParser.json())
+// app.use(bodyParser.urlencoded({extended:true}))
 
 // static file
 app.use(express.static("public"));

@@ -80,7 +80,7 @@ const securePassword = async (password) => {
 const addUser = async (req, res) => {
     const spassword = await securePassword(req.body.password)
     try {
-        const emailToFind = req.body.email;
+        const emailToFind = req.body.email.toLowerCase();
         const emailExists = await User.findOne({ email: emailToFind });
         if (emailExists) {
             res.render("newUser", { message: "Email already exists. Please use a different email." });
@@ -156,7 +156,7 @@ const searchUser = async (req, res) => {
         const usersData = await User.find({
             is_admin: 0,
             username: {
-                $regex: new RegExp(search, 'i')
+                $regex: new RegExp("^"+search, 'i')
             }
         });
         res.render("adminPanel", { user: usersData });
