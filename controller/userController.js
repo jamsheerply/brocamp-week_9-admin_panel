@@ -24,7 +24,7 @@ const insertUser = async (req, res) => {
     const secpassword = await securePassword(req.body.password)
     try {
         // Check if the email already exists in the database
-        const emailToFind = req.body.email;
+        const emailToFind = req.body.email.toLowerCase();
         const emailExists = await User.findOne({ email: emailToFind });
         
         if (emailExists) {
@@ -34,7 +34,7 @@ const insertUser = async (req, res) => {
         } else {
             const user = new User({
                 username: req.body.username,
-                email: req.body.email,
+                email: req.body.email.toLowerCase(),
                 password: secpassword
             });
 
