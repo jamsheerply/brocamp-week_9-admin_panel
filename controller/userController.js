@@ -40,7 +40,7 @@ const insertUser = async (req, res) => {
 
             const userData = await user.save();
             if (userData) {
-                res.redirect("/login");
+                res.redirect("/login/");
             } else {
                 res.render("sign-up", { message: "Failed to create the user. Please try again or contact the admin." });
             }

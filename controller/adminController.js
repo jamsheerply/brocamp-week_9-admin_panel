@@ -82,6 +82,8 @@ const addUser = async (req, res) => {
     try {
         const emailToFind = req.body.email.toLowerCase();
         const emailExists = await User.findOne({ email: emailToFind });
+
+        console.log(emailExists+'exti sdklasjdkflj')
         if (emailExists) {
             res.render("newUser", { message: "Email already exists. Please use a different email." });
         } else if (req.body.username.trim() === "") {
